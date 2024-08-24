@@ -36,6 +36,7 @@ class MainViewModel @Inject constructor() : ViewModel() {
                         "\\[Debug\\]".toRegex() to "<font color=\"#156238\">[Debug] </font>",
                         "\\[Error\\]".toRegex() to "<font color=\"#8e2e41\">[Error] </font>",
                         "\\[Warning\\]".toRegex() to "<font color=\"#fe9a01\">[Warning] </font>",
+                        "\\[31mFATAL\\[0m".toRegex() to "<font color=\"#8e2e41\">[FATAL] </font>",
                         "\n".toRegex() to "<br>"
                     )
                 )

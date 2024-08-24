@@ -116,7 +116,7 @@ class MainFragment : Fragment(), ISettingDialog, IMakeDialog {
                 statusTitle.text = StatusConnection.Enabled.str
                 tvApps.text = strapps
                 proxy.setColorBackground("#6fa251")
-                statusIcon.setImage(R.drawable.ic_enabled)
+                statusIcon.setImage(R.drawable.ic_info)
                 statusSummary.moduleVer()
             }
 
@@ -124,7 +124,7 @@ class MainFragment : Fragment(), ISettingDialog, IMakeDialog {
                 statusTitle.text = StatusConnection.Disabled.str
                 tvApps.text = strapps
                 proxy.setColorBackground("#87afc7")
-                statusIcon.setImage(R.drawable.ic_disabled)
+                statusIcon.setImage(R.drawable.ic_info)
                 statusSummary.moduleVer()
             }
 
@@ -132,7 +132,7 @@ class MainFragment : Fragment(), ISettingDialog, IMakeDialog {
                 statusTitle.text = StatusConnection.Loading.str
                 tvApps.text = strapps
                 proxy.setColorBackground("#478fec")
-                statusIcon.setImage(R.drawable.ic_loading)
+                statusIcon.setImage(R.drawable.ic_info)
                 statusSummary.moduleVer()
             }
 
@@ -148,7 +148,7 @@ class MainFragment : Fragment(), ISettingDialog, IMakeDialog {
                 statusTitle.text = StatusConnection.Unknown.str
                 tvApps.text = strapps
                 proxy.setColorBackground("#26b545")
-                statusIcon.setImage(R.drawable.ic_app)
+                statusIcon.setImage(R.drawable.ic_info)
                 statusSummary.moduleVer()
             }
         }
@@ -234,11 +234,11 @@ class MainFragment : Fragment(), ISettingDialog, IMakeDialog {
                     val jo = JSONObject(response.body!!.string())
                     var res: String? = ""
                     res = if (state == 1) {
-                        "IP: ${jo.getString("query")}\n" +
-                                "ISP: ${jo.getString("isp")}\n" +
-                                "TZ: ${jo.getString("timezone")}\n" +
-                                "C: ${jo.getString("country")}\n" +
-                                "City: ${jo.getString("city")}\n"
+                        "🌐 ${jo.getString("query")}\n" +
+                                "📡 ${jo.getString("isp")}\n" +
+                                "🕒 ${jo.getString("timezone")}\n" +
+                                "🚩 ${jo.getString("country")}\n" +
+                                "📍 ${jo.getString("city")}\n"
                     } else {
                         if (jo.getString("versionCode")
                                 .toInt() > ModuleManager.moduleVersionCode.toInt()

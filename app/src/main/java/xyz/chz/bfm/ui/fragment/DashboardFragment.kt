@@ -36,7 +36,7 @@ class DashboardFragment : Fragment(), IMakeDialog {
             showRes()
         } else {
             MakeDialog(
-                "Wowo :( ",
+                "Ahhhh....!!",
                 "Your core is not clash or sing-box so dashboard not available",
                 false,
                 false
@@ -51,7 +51,7 @@ class DashboardFragment : Fragment(), IMakeDialog {
         } else {
             TermCmd.linkDBSing
         }
-        dbWebview.loadUrl("${linkDB}/ui/#/proxies")
+        dbWebview.loadUrl("${linkDB}/ui")
 
         with(dbWebview.settings) {
             domStorageEnabled = true

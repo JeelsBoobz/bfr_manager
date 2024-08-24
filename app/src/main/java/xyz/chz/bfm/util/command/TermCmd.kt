@@ -16,7 +16,10 @@ object TermCmd {
     private const val yq = "${path}/bin/yq"
 
     fun isProxying(): Boolean {
-        return execRootCmdSilent("if [ -f ${path}/run/box.pid ] ; then exit 1;fi") == 1
+        val pid = execRootCmd("cat ${path}/run/box.pid").trim()
+        if (pid.isEmpty()) return false
+        val cmdline = execRootCmd("cat /proc/${pid}/cmdline")
+        return cmdline.contains("/data/adb/box")
     }
 
     fun renewBox(callback: (Boolean) -> Unit) {
@@ -46,15 +49,15 @@ object TermCmd {
 
     val linkDBClash: String
         get() {
-            return execRootCmd("grep 'external-controller:' ${path}/clash/config.yaml | awk '{print $2}'")
+            val config_name = execRootCmd("cat ${path}/settings.ini | grep 'name_clash_config=' | sed 's/.*name_clash_config=\"//; s/\".*//'")
+            return execRootCmd("grep 'external-controller:' ${path}/clash/${config_name} | awk '{print $2}'")
         }
 
 
     val linkDBSing: String
         get() {
-            val cmd =
-                "grep -w 'external_controller' ${path}/sing-box/config.json | awk '{print $2}' | sed 's/\"//g' | sed 's/,//g'"
-            return execRootCmd(cmd)
+            val config_name = execRootCmd("cat ${path}/settings.ini | grep 'name_sing_config=' | sed 's/.*name_sing_config=\"//; s/\".*//'")
+            return execRootCmd("grep -w 'external_controller' ${path}/sing-box/${config_name} | awk '{print $2}' | sed 's/\"//g' | sed 's/,//g'")
         }
 
     val appidList: HashSet<String>

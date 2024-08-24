@@ -77,8 +77,7 @@ class SettingDialog : MaterialDialogFragment() {
                                 else -> "v2fly"
                             }
                         }
-                
-                        override fun onNothingSelected(parent: AdapterView<*>?) {
+                        override fun onNothingSelected(p0: AdapterView<*>?) {
                         }
                     }
                 }

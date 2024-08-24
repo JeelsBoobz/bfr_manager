@@ -44,7 +44,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
 
     // Syntax Highlighting
-    api("com.github.markusressel.KodeHighlighter:core:v3.0.0")
+    api("com.github.markusressel.KodeHighlighter:core:v3.1.0")
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
