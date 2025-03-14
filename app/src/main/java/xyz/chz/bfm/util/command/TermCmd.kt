@@ -28,15 +28,17 @@ object TermCmd {
 
     fun start(callback: (Boolean) -> Unit) {
         thread {
-            val cmd = "${path}/scripts/box.service start && ${path}/scripts/box.iptables enable"
-            execRootCmdVoid(cmd, callback)
+            execRootCmdVoid("${path}/scripts/box.service start") { 
+                execRootCmdVoid("${path}/scripts/box.iptables enable", callback)
+            }
         }
     }
 
     fun stop(callback: (Boolean) -> Unit) {
         thread {
-            val cmd = "${path}/scripts/box.iptables disable && ${path}/scripts/box.service stop"
-            execRootCmdVoid(cmd, callback)
+            execRootCmdVoid("${path}/scripts/box.iptables disable") { 
+                execRootCmdVoid("${path}/scripts/box.service stop", callback)
+            }
         }
     }
 
