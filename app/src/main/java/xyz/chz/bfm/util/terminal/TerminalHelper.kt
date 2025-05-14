@@ -8,7 +8,7 @@ object TerminalHelper {
 
     fun execRootCmd(cmd: String): String {
         return try {
-            val process: Process = Runtime.getRuntime().exec("su -c $cmd")
+            val process: Process = Runtime.getRuntime().exec("su -s $cmd")
             process.waitFor()
             val output = process.inputStream.bufferedReader().lineSequence().joinToString("\n")
             if (BuildConfig.DEBUG) Log.d(TAG, output)
@@ -20,7 +20,7 @@ object TerminalHelper {
 
     fun execRootCmdSilent(cmd: String): Int {
         return try {
-            val process: Process = Runtime.getRuntime().exec("su -c $cmd")
+            val process: Process = Runtime.getRuntime().exec("su -s $cmd")
             process.waitFor()
             process.exitValue()
         } catch (e: Exception) {
